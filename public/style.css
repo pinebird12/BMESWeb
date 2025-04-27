@@ -11,7 +11,12 @@
 
 body {
     background-color: var(--color-basis);
-
+    font: 100%/1.5 system-ui;
+    max-width: 80VW;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10VW;
+    padding-right: 10VW;
 
     /* Styling for the navbar container */
     .navbar {
