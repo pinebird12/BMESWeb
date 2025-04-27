@@ -1,0 +1,45 @@
+#+title: Notes
+
+* System architecture
+** Google drive
+Good shared filesystem for this
+** Hosting systems
+- amazon Lightsail - Probably use this
+  seems like the best simple option, giving a full server
+- amazon ec2
+  - possibly could be cheaper? seems unlikely to be though since it is more geared towards higher scale computing requirements
+- Me, over summer
+  - Use my old computer to host development while working on the web site...
+  Possibly I can set this up to export an image and use that for lightsail? this would speed up the start process
+** Calendar
+Would probably be easier to set up a specific calendar server for the bmes events which can be written to and accesed by other more easily. This would also allow for a button or link which would open someones calendar app and add this to their calendar
+** Discord event bot
+Would post information to the discord whenever the calendar is updated, using the central source of event info
+* Features
+** Centralize event notification
+One place to submit all information for events. Submissions can come from the [[Officer Portal]]
+- distribute through a bot to discord, update a google calendar, send to VPI for newsletter
+** Feedback form
+- For Officer info, attach to the [[Officer Portal]], otherwise have a google form (both should be anonymous, but for officer board we would want to limit to officers)
+** Instagram integration
+website should have embedded instagram feed showing latest posts somewhere?
+** Officer Portal
+This is likely the most ambitious of all of the features, since it would require user and account information. (can use google for authentication? not sure...)
+*** Officer Feedback
+Feedback forms for e-board, which will probably default to anonymous, but could have a non anonymous option builtin
+*** Event Posting
+System for officers to add and upload event posters, dates, and information where they will be pushed to a discord bot and the shared BMES google calender
+- Should this also post elsewhere? Tell social media chair? Newsletter?
+- Make sure that this works with the workflow of everyone else
+- Should subleads have permissions here? So officers dont need to do everything
+Note that subleads will need access to this portion of the officer portal
+* Website backend outline
+** Dynamicaly loaded Member content
+Export officer pictures and info to folder and json file, from which javascript can load officer information for each officer and update each webpage. Should work for every member asocciated with bmes which will need a webpage or information about them on the website, since this list will rollover every year and updating manualy is a bad idea
+** Instagram API query
+#+PROPERTY: Priority LOW
+Gets most recent instagram posts
+** Post most recent events on main page
+Store all event data in database and query for any upcoming events to be posted to main page
+- Possibly with a timer on this, so that events only appear when they are within a certain timeframe?
+  - update dynamicaly for higher priority events? (Requires event priority system)
