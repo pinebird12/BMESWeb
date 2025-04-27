@@ -45,14 +45,20 @@ Store all event data in database and query for any upcoming events to be posted 
 * Website Structure
 ** Main Page
 *** Get Involved
+Small section of text followed by link to getting involved page
 *** Upcoming events
+dynamicly load events
 *** Major events
 Div section for major events that are upcoming which can link to eventbrite, volunteer sign-up, and other importaint info for the major events, which can popup dynamically whenever the event is getting close. This should be on top of Upcoming events
 ** Get involved page
-*** Upcoming GBM Info
+*** Upcoming GBM Info :dynamic:
 *** Links and info about comittees
+**** What committees do :static:
+**** Who is on committee and when/where meetings :dynamic:
 *** Submit feedback
-*** Officers
+General Body feedback form link
+*** Officers :dynamic:
+List of all current officers
 ** Committees :dropdown:
 *** New Student Committee
 *** Outreach Committee
@@ -65,3 +71,12 @@ Div section for major events that are upcoming which can link to eventbrite, vol
 *** BE-Day
 *** Medical Innovation Day
 *** Lab Expo
+
+* Further Ideas?
+** Bmes events integration
+- Assassins ranking tab
+Other competitions can be listed somewhere on the website
+* Development notes
+** [2025-04-27 Sun 14:23] This should be a css grid with the different comittes
+
+[[file:~/bmes/Website/public/involvment.html::66]]

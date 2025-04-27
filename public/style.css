@@ -2,40 +2,83 @@
     --color-basis: #4D19A8;
     --color-accentPrimary: #B2F0DB;
     --color-accent2Dark: #C0345E;
-    --color-accent2Light: #D6D0Ck9;
+    --color-accent2Light: #D191A5;
+    --color-linkTester: #1D8A27;
     color: #FFFFFF;
 }
+
+
+
 body {
     background-color: var(--color-basis);
-  nav {
-    display: flex;
-    margin-bottom: 5VH;
 
-    a {
-      flex: 1;
-      text-decoration: none;
-      color: var(--color-accent1Dark);
-      font-weight: bold;
-      text-align: center;
-      padding: 0.5em;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-bottom-color: var(--color-accentPrimary);
 
-      &:hover {
-        border-bottom-color: var(--color-accent2Dark);
-        border-bottom-width: 0.4em;
-        background-color: var(--color-accent2Light);
-      }
-
-      &.current {
-      border-bottom-width: 0.4em;
-      border-bottom-color: var(--color-accentPrimary);
-      }
-
-      &.current:hover {
-        background-color: var(--color-accent2Light);
-      }
+    /* Styling for the navbar container */
+    .navbar {
+        overflow: hidden;
+        /* border-bottom: solid; */
+        /* border-bottom-width: 1px; */
+        /* border-bottom-color: var(--color-accentPrimary); */
     }
+
+    .navbar a {
+        float: left;
+        color: inherit;
+        text-align: center;
+        padding: 1em 1em;
+        text-decoration: none;
+    }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 1em;
+        border: none;
+        outline: none;
+        color: inherit;
+        padding: 1em 1em;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+    .current {
+      background-color: var(--color-accent2Dark);
+    }
+
+  .grid-this {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+    gap: 1.5em;
   }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--color-accent2Light);
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--color-basis);
+        /*Possibly need to FIXME*/
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a:hover {
+        background-color: var(--color-accent2Light);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    /* End Styling for navbar container */
+
+  a {
+    color: var(--color-linkTester);
+  }
+
 }

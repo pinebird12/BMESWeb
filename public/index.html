@@ -7,17 +7,43 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet" />
+        <script type='module' src='global.js'></script>
 
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         <!-- TODO Place favicon.ico in the root directory -->
     </head>
     <body>
-        <nav>
-            <a href="tester">Committee 1</a>
-            <a href="tester">Committee 2</a>
-            <a href="tester">Committee 3</a>
-            <a href="tester">Committee 4</a>
-        </nav>
+        <div class="navbar">
+            <a class="homePage" href="index.html">Home</a>
+            <a href="involvment.html">Get Involved</a>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Our Events
+                    <!-- <i class="dummyi"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="events/mid.html">Medical Innovation Day</a>
+                    <a href="events/lexpo.html">Lab Expo</a>
+                    <a href="events/beDay.html">Bioengineering Day</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Committees
+                    <!-- <i class="dummyi"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="committees/nsc.html">New Student Committee</a>
+                    <a href="committees/outreach.html">Outreach Committee</a>
+                    <a href="committees/project.html">Project Team</a>
+                    <a href="committees/wetlab.html">Wetlab Team</a>
+                    <!-- FIXME: update name for wetlab committee -->
+                    <a href="committees/midCom.html">MID Planning Committee</a>
+                    <a href="committees/lexpoCom.html">Lab Expo Planning Committee</a>
+                    <a href="committees/beDayCom.html">BE-Day Planning Committee</a>
+                </div>
+            </div>
+        </div>
 
         <!--[if lt IE 8]>
             <p class="browserupgrade">
@@ -26,8 +52,39 @@
             your experience.
             </p>
         <![endif]-->
-        <h1>BioMedical Engineering Society Of UCSD</h1>
-        <p>Here is some basic content</p>
+        <h1>BioMedical Engineering Society at UCSD</h1>
+        <h2>Getting Involved</h2>
+        <p>
+            Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc, consequat! Amet, dictum sit
+            amet justo donec enim diam, vulputate ut pharetra sit amet, aliquam id diam maecenas.
+        </p>
+        <p>
+            Tortor aliquam nulla facilisi cras fermentum, odio eu feugiat pretium, nibh ipsum consequat nisl, vel pretium lectus
+            quam id leo in. Sed libero enim, sed faucibus turpis in eu mi!
+        </p>
+        <p>
+            Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Posuere morbi leo urna, molestie at elementum
+            eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec.
+        </p>
+        <p>
+            Arcu dui vivamus arcu felis, bibendum ut tristique et, egestas quis ipsum suspendisse ultrices gravida dictum fusce
+            ut. Nisl, condimentum id venenatis a, condimentum vitae sapien pellentesque habitant morbi tristique?
+        </p>
+        <h3>Our Next GBM:</h3>
+        <div class="gbm">
+            Egestas erat imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor id eu
+            nisl nunc mi ipsum? Tincidunt praesent semper feugiat nibh sed pulvinar?
+        </div>
+        <div class="major-event">
+            <!-- This section is empty, unless within x days of a major event (MID, LabExp, BEDay) -->
+        </div>
+        <div class="upcoming">
+            <h2>Upcoming Events</h2>
+            <div class="tile-display">
+                <!-- Upcoming events loaded from js here -->
+            </div>
+        </div>
+
 
     </body>
 </html>

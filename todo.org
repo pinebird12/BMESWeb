@@ -1,0 +1,6 @@
+#+title: Todo
+* Website.js
+** TODO add loading of next gbm date
+[[file:public/involvment.html::<h2>Our next General Body Meeting is on </h2>][Append the date to the end of the heading]]
+** TODO load gbm info
+[[file:public/involvment.html::<!-- GBM info dynamicly loaded here -->][Div class to query for]]
