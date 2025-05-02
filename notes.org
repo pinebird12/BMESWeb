@@ -17,13 +17,13 @@ Would probably be easier to set up a specific calendar server for the bmes event
 Would post information to the discord whenever the calendar is updated, using the central source of event info
 * Features
 ** Centralize event notification
-One place to submit all information for events. Submissions can come from the [[Officer Portal]]
+One place to submit all information for events. Submissions can come from the [[Member Portal]]
 - distribute through a bot to discord, update a google calendar, send to VPI for newsletter
 ** Feedback form
-- For Officer info, attach to the [[Officer Portal]], otherwise have a google form (both should be anonymous, but for officer board we would want to limit to officers)
+- For Officer info, attach to the [[Member Portal]], otherwise have a google form (both should be anonymous, but for officer board we would want to limit to officers)
 ** Instagram integration
 web site should have embedded Instagram feed showing latest posts somewhere?
-** Officer Portal
+** Member Portal
 This is likely the most ambitious of all of the features, since it would require user and account information. (can use google for authentication? not sure...)
 *** Officer Feedback
 Feedback forms for e-board, which will probably default to anonymous, but could have a non anonymous option built-in
@@ -32,7 +32,7 @@ System for officers to add and upload event posters, dates, and information wher
 - Should this also post elsewhere? Tell social media chair? Newsletter?
 - Make sure that this works with the workflow of everyone else
 - Should sub leads have permissions here? So officers don't need to do everything
-Note that sub-leads will need access to this portion of the officer portal
+Note that sub-leads will need access to this portion of the Member portal
 * Website backend outline
 ** Dynamically loaded Member content
 Export officer pictures and info to folder and JSON file, from which JavaScript can load officer information for each officer and update each webpage. Should work for every member associated with bmes which will need a webpage or information about them on the website, since this list will roll-over every year and updating manually is a bad idea
@@ -80,3 +80,20 @@ Other competitions can be listed somewhere on the website
 ** [2025-04-27 Sun 14:23] This should be a css grid with the different comittes
 
 [[file:~/bmes/Website/public/involvment.html::66]]
+
+* Dev overview for deployment
+** Server Backend
+*** Django
+This is a python web framework which should be able to handle everything for the web application based portion of the website (probably mostly the member portal). It can interact with a sql database, where I assume we will store the internship data, and can also manage forewarding based on permissions. It can also handle the more basic aspects such as webpage templating
+*** Google oAuth SKD
+Integration with this will allow for user authentication. The free version will allow up to 50,000 users if we only want name and email (also one or two other things I dont think we will need) so this should be enough
+*** SQL (postgres)
+SQL. Need I say more?
+** Fontend
+*** DONE Identify frontend
+This portion should just be for making the website more easily. I dont think(?) any dynamic html building will be nessesary as django templating hand handle all of this, but wil need to write css 🤮
+*** JavaScript
+For most of the site this won't be that difficult, but for the member portal fairly extensive interaction will be needed. Mostly this should just be for form submissions, most of which can be handled by the backed, but for the database interaction this will be more complex, as that will need to be displayed on the frontend. I may not need to write this portion though, so we will have to see
+*** TODO DataBase interaction
+Somehow there needs to be a system for frontend user to interact with the intern database. Not sure what tools will help with this, but should find some?
+- It is possible (even likely) that django will have an interface for this. Look into it
