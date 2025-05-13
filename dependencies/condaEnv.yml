@@ -1,0 +1,7 @@
+name: bmes
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - django
+prefix: /opt/homebrew/Caskroom/miniconda/base/envs/bmes

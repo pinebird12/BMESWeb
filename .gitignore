@@ -3,3 +3,7 @@
 *.out
 /notes.synctex.gz
 *.toc
+/.auctex-auto/
+/notes.tex
+/notes.pdf
+/_minted-notes/

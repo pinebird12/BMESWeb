@@ -33,6 +33,7 @@ System for officers to add and upload event posters, dates, and information wher
 - Make sure that this works with the workflow of everyone else
 - Should sub leads have permissions here? So officers don't need to do everything
 Note that sub-leads will need access to this portion of the Member portal
+*** Member interaction somehow?
 * Website backend outline
 ** Dynamically loaded Member content
 Export officer pictures and info to folder and JSON file, from which JavaScript can load officer information for each officer and update each webpage. Should work for every member associated with bmes which will need a webpage or information about them on the website, since this list will roll-over every year and updating manually is a bad idea
@@ -47,12 +48,12 @@ Store all event data in database and query for any upcoming events to be posted 
 *** Get Involved
 Small section of text followed by link to getting involved page
 *** Upcoming events
-dynamicly load events
+dynamically load events
 *** Major events
-Div section for major events that are upcoming which can link to eventbrite, volunteer sign-up, and other importaint info for the major events, which can popup dynamically whenever the event is getting close. This should be on top of Upcoming events
+Div section for major events that are upcoming which can link to eventbrite, volunteer sign-up, and other important info for the major events, which can pop up dynamically whenever the event is getting close. This should be on top of Upcoming events
 ** Get involved page
 *** Upcoming GBM Info :dynamic:
-*** Links and info about comittees
+*** Links and info about committees
 **** What committees do :static:
 **** Who is on committee and when/where meetings :dynamic:
 *** Submit feedback
@@ -64,9 +65,9 @@ List of all current officers
 *** Outreach Committee
 *** Project Team
 *** Cell Team :unfinished:
-*** MID Planning Committe
-*** Lab Expo Planning Committe
-*** BE-Day Planning Committe
+*** MID Planning Committee
+*** Lab Expo Planning Committee
+*** BE-Day Planning Committee
 ** Major Events :dropdown:
 *** BE-Day
 *** Medical Innovation Day
@@ -76,24 +77,47 @@ List of all current officers
 ** Bmes events integration
 - Assassins ranking tab
 Other competitions can be listed somewhere on the website
-* Development notes
-** [2025-04-27 Sun 14:23] This should be a css grid with the different comittes
-
-[[file:~/bmes/Website/public/involvment.html::66]]
 
 * Dev overview for deployment
 ** Server Backend
 *** Django
-This is a python web framework which should be able to handle everything for the web application based portion of the website (probably mostly the member portal). It can interact with a sql database, where I assume we will store the internship data, and can also manage forewarding based on permissions. It can also handle the more basic aspects such as webpage templating
+This is a python web framework which should be able to handle everything for the web application based portion of the website (probably mostly the member portal). It can interact with a sql database, where I assume we will store the internship data, and can also manage forwarding based on permissions. It can also handle the more basic aspects such as webpage templating
 *** Google oAuth SKD
-Integration with this will allow for user authentication. The free version will allow up to 50,000 users if we only want name and email (also one or two other things I dont think we will need) so this should be enough
+Integration with this will allow for user authentication. The free version will allow up to 50,000 users if we only want name and email (also one or two other things I don't think we will need) so this should be enough
 *** SQL (postgres)
 SQL. Need I say more?
 ** Fontend
 *** DONE Identify frontend
-This portion should just be for making the website more easily. I dont think(?) any dynamic html building will be nessesary as django templating hand handle all of this, but wil need to write css 🤮
+This portion should just be for making the website more easily. I don't think(?) any dynamic html building will be nessesary as django templating hand handle all of this, but wil need to write css 🤮. Possibly also JS for internship database, which will want search and filter operations. (though Django may have pre-built templates for that part). If we want more fun things than JS might be nessesary
 *** JavaScript
-For most of the site this won't be that difficult, but for the member portal fairly extensive interaction will be needed. Mostly this should just be for form submissions, most of which can be handled by the backed, but for the database interaction this will be more complex, as that will need to be displayed on the frontend. I may not need to write this portion though, so we will have to see
+For most of the site this won't be that difficult, but for the member portal fairly extensive interaction will be needed. Mostly this should just be for form submissions, most of which can be handled by the backend, but for the database interaction this will be more complex, as that will need to be displayed on the frontend. I may not need to write this portion though, so we will have to see
 *** TODO DataBase interaction
 Somehow there needs to be a system for frontend user to interact with the intern database. Not sure what tools will help with this, but should find some?
 - It is possible (even likely) that django will have an interface for this. Look into it
+* Django Scheme
+** App list
+*** Main website
+Mainly static
+**** Views
+***** Home (Project root)
+***** Committees :dropdown:
+ - set up dynamicaly and serve the same template page? This may be an issue if Committees want more specific things on their webpages
+***** Principle Members
+***** Events
+****** TODO Better to template these pages or have each individual?
+***** Get involved
+*** Member portal
+**** Views
+***** Home
+***** Internship database
+***** Account settings?
+*** Officer/sublead console
+This might get built out of the native django admin console, have to see how easy to use I can make that and with what permission schemes. Ideally use oAuth for all login, so have to see if django admin supports that
+*** Eboard console
+- Fold into officer console and just allow elevated pemissions?
+** Models
+*** Events
+This will also need to be accessed by the main section of the webstite, for content loading. Should be modified through the Officer/Sublead console
+*** Internship Database
+**** TODO Check what kinds of data is stored here so you can scheme it
+Also should probably refresh on sql schema diagrams for documentation
