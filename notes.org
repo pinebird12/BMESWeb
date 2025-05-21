@@ -116,8 +116,13 @@ This might get built out of the native django admin console, have to see how eas
 *** Eboard console
 - Fold into officer console and just allow elevated pemissions?
 ** Models
+Note: ensure that you use database accessors that use the .get function for return values, to ensure that Does not exsit errors are returned in all cases where this is true
 *** Events
 This will also need to be accessed by the main section of the webstite, for content loading. Should be modified through the Officer/Sublead console
 *** Internship Database
 **** TODO Check what kinds of data is stored here so you can scheme it
+***** attrs
+- names
+- links
+- due date
 Also should probably refresh on sql schema diagrams for documentation

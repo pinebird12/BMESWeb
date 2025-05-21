@@ -7,3 +7,5 @@
 /notes.tex
 /notes.pdf
 /_minted-notes/
+*.pyc
+*.sqlite3
