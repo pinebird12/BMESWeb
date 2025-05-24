@@ -1,4 +1,3 @@
-import datetime
 import uuid
 from django.db import models
 from django.core.exceptions import ValidationError
@@ -21,7 +20,6 @@ class Committee(models.Model):
         through='Roll',
         through_fields=('committee', 'person')
     )
-    description = models.TextField()
 
     def __str__(self):
         """Human readable representation"""
@@ -35,7 +33,11 @@ class Committee(models.Model):
         get the list of all officers
         running the committee
         """
-        return self.objects.filter('rollname')
+        return self.members.through.all().filter(roll_name='mbr').person.all()
+
+    def get_subleads(self):
+        """Returns list of all subleads"""
+        return self.members.through.all().filter(roll_name='sl').person.all()
 
 
 
@@ -55,6 +57,8 @@ class Event(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     managing_committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 class Member(models.Model):
     """
@@ -65,7 +69,7 @@ class Member(models.Model):
     """
     email = models.EmailField(primary_key=True)
     name = models.CharField(max_length=50, blank=True)
-    member_since = models.DateField(default=timezone.now())
+    member_since = models.DateField(default=timezone.now)
     linkedin = models.URLField(blank=True)
     portfolio = models.URLField(blank=True)  # Website or other link to personal info that isn't linkedin
     github = models.URLField(blank=True)  # Presumably the only person who will use this is you :)
@@ -73,6 +77,10 @@ class Member(models.Model):
     headshot = models.ImageField(upload_to=None, blank=True)  #  TODO add upload destination
     active = models.BooleanField(default=True)
     eboard = models.BooleanField(default=False)
+
+    def __str__(self):
+        returnval = self.name if self.name is not None else self.email
+        return returnval
 
 class Roll(models.Model):
     """

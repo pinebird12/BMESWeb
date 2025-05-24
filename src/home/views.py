@@ -8,3 +8,6 @@ def index(request):
 
 def committee_page(request, committee=None):
     return None
+
+def involvement(request):
+    return render(request, 'home/involvement.html')

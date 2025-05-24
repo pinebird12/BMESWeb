@@ -9,3 +9,7 @@
 /_minted-notes/
 *.pyc
 *.sqlite3
+/.dir-locals.el
+/src/Bildschirmfoto_2025-03-07_um_21.04.58.png
+/src/None/
+/src/home/migrations/*.py

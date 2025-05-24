@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Get Involved</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static "home/style.css" %}" rel="stylesheet" />
+
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+
+    <body>
+        {% include './navBar.html' %}
+        <!--[if lt IE 8]>
+                <p class="browserupgrade">
+                You are using an <strong>outdated</strong> browser. Please
+                <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+                your experience.
+                </p>
+            <![endif]-->
+            <h2>Getting Involved</h2>
+            <p>Something something here are the committees something somethinge you can join one, also something welcome sounding for new students</p>
+            <h3 class='GMBInfo'>Our next General Body Meeting is on </h2>
+            <div class="tile-display grid-this">
+                <!-- GBM info dynamicly loaded here -->
+            </div>
+            <h3>The Committees</h3>
+            <div class="grid-this">
+                <!-- TODO make django autofill this -->
+            </div>
+            <h3>Questions? Comments? Concerns? Send Feedback!</h3>
+            <div class="feedback">Not sure if this should be a link or embeded form...</div>
+    </body>
+
+</html>
