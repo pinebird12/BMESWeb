@@ -1,21 +1,26 @@
+{% load static %}
 <!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{% block name %} Under Construction {% endblock %}</title>
+        <title>{% block name %}Under Construction{% endblock %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link href="{% static "home/style.css" %}" rel="stylesheet"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
     </head>
     <body>
         <div class="title">
+            {% include "./navBar.html" %}
+            <h1>
             {% block title %}
-            <h1>ERROR</h1>
+            ERROR
             {% endblock %}
+            </h1>
         </div>
 
         <div class="about">

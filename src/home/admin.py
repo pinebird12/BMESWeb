@@ -3,23 +3,27 @@ from .models import *
 
 # Register your models here.
 
-class committeeAdmin(admin.ModelAdmin):
-    # This should be fairly static
-    # but should certainly allow easy
-    # changing of subleads for officers
-    # and changing officers for eboard
+class rollAdmin(admin.ModelAdmin):
     pass
 
 class memberAdmin(admin.ModelAdmin):
-    # Ideally this will be automated but manual controll
+    # Ideally this will be automated but manual control
     # Should be needed
-    pass
+    list_display = ['email', 'name']
 
 class eventAdmin(admin.ModelAdmin):
     # NOTE: this might be different since
     # event adding is different
     pass
 
-admin.site.register(Committee, committeeAdmin)
+class committeeAdmin(admin.ModelAdmin):
+    # NOTE: this will be removed for final
+    # production, but for testing having
+    # an interface to add committees will be
+    # helpfull
+    pass
+
 admin.site.register(Member, memberAdmin)
 admin.site.register(Event, eventAdmin)
+admin.site.register(Roll, rollAdmin)
+admin.site.register(Committee, committeeAdmin)

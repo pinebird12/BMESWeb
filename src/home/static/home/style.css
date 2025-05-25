@@ -71,6 +71,7 @@ body {
         /*Possibly need to FIXME*/
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        align-items: center;
     }
 
     .dropdown-content a:hover {
@@ -78,7 +79,7 @@ body {
     }
 
     .dropdown:hover .dropdown-content {
-        display: block;
+        display: grid;
     }
     /* End Styling for navbar container */
 

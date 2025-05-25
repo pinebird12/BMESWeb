@@ -80,7 +80,7 @@ class Member(models.Model):
 
     def __str__(self):
         returnval = self.name if self.name is not None else self.email
-        return returnval
+        return self.email
 
 class Roll(models.Model):
     """

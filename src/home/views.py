@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
-
 def index(request):
     return render(request, 'home/index.html')
 
@@ -13,10 +11,10 @@ def involvement(request):
     return render(request, 'home/involvement.html')
 
 def beday(request):
-    return None
+    return render(request, 'home/beday.html')
 
 def lexpo(request):
-    return None
+    return render(request, 'home/lexpo.html')
 
 def mid(request):
-    return None
+    return render(request, 'home/mid.html')
