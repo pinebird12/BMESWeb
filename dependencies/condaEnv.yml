@@ -1,8 +1,10 @@
 name: bmes
 channels:
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
+  - defaults
+  - conda-forge
 dependencies:
   - django
   - pillow
-prefix: /opt/homebrew/Caskroom/miniconda/base/envs/bmes
+  - uvicorn
+  - whitenoise
+prefix: /home/joebiden/miniconda3/envs/bmes
