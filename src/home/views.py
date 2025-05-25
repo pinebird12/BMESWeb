@@ -11,3 +11,12 @@ def committee_page(request, committee=None):
 
 def involvement(request):
     return render(request, 'home/involvement.html')
+
+def beday(request):
+    return None
+
+def lexpo(request):
+    return None
+
+def mid(request):
+    return None
