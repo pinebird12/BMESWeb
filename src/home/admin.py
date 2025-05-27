@@ -14,7 +14,7 @@ class memberAdmin(admin.ModelAdmin):
 class eventAdmin(admin.ModelAdmin):
     # NOTE: this might be different since
     # event adding is different
-    pass
+    list_display = ['name', 'start_date']
 
 class committeeAdmin(admin.ModelAdmin):
     # NOTE: this will be removed for final

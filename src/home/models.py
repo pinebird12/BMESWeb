@@ -18,7 +18,8 @@ class Committee(models.Model):
     members = models.ManyToManyField(
         'Member',
         through='Roll',
-        through_fields=('committee', 'person')
+        through_fields=('committee', 'person'),
+        related_name='position'
     )
 
     def __str__(self):
@@ -33,7 +34,10 @@ class Committee(models.Model):
         get the list of all officers
         running the committee
         """
-        return self.members.through.all().filter(roll_name='mbr').person.all()
+        quer = self.members.filter(
+            email__in=Roll.objects
+            .filter(roll_name='off').values_list('person', flat=True))
+        return quer
 
     def get_subleads(self):
         """Returns list of all subleads"""
@@ -77,6 +81,7 @@ class Member(models.Model):
     headshot = models.ImageField(upload_to=None, blank=True)  #  TODO add upload destination
     active = models.BooleanField(default=True)
     eboard = models.BooleanField(default=False)
+    about = models.TextField(blank=True)
 
     def __str__(self):
         returnval = self.name if self.name is not None else self.email
