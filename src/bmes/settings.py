@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['192.168.0.212', '68.8.84.27', '127.0.0.1']
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'home.tags.home_extras',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -64,6 +65,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries' : {
+                'home_extras': 'home.tags.home_extras'
+            }
         },
     },
 ]
@@ -100,6 +104,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'home.Member'
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -115,6 +123,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+MEDIA_ROOT = 'media/'
+MEDIA_URL = MEDIA_ROOT
 
 STATIC_URL = 'static/'
 

@@ -1,3 +1,5 @@
+{% load home_extras %}
+{% committees as navComs %}
 <div class="navbar">
     <a class="homePage" href="{% url 'home' %}">Home</a>
     <a href="{% url 'involvement' %}">Get Involved</a>
@@ -15,6 +17,11 @@
         <button class="dropbtn">
             Committees
         </button>
+        <div class="dropdown-content">
+            {% for committee in navComs %}
+            <a href="/committees/{{ committee.page_name }}">{{ committee.full_name }}</a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.template import Library
 from django.http import HttpResponse
 from .models import Committee
+
 
 def index(request):
     return render(request, 'home/index.html')
@@ -21,3 +23,4 @@ def lexpo(request):
 
 def mid(request):
     return render(request, 'home/mid.html')
+

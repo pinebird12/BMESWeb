@@ -1,1 +1,6 @@
 #+title: Todo
+* Inbox
+** TODO Go over the instructions here to understand everthing that is here
+[[https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#abstractbaseuser]]
+
+[[file:~/bmes/BmesWeb/src/home/models.py::TODO: Really go over all of this.]]

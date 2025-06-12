@@ -1,7 +1,11 @@
 import uuid
+from django.contrib.auth.models import UserManager
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth import base_user
+from .managers import MemberManager
 
 # Create your models here.
 
@@ -55,7 +59,7 @@ class Event(models.Model):
     start_date = models.DateTimeField('Event Start')
     end_date = models.DateTimeField('Event End')
     name = models.CharField(max_length=200)
-    flyer = models.ImageField(upload_to='')  # TODO make Path object to get the upload location
+    flyer = models.ImageField(upload_to='static/events')  # TODO make Path object to get the upload location
     # /uploads/events/<event_name>
     description = models.TextField()
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -64,28 +68,47 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
-class Member(models.Model):
+
+
+class Member(base_user.AbstractBaseUser):
     """
     Model to store all information about members
     Anything other than the email can be null,
     and not null constraints are enforced for officers and
     subleads
     """
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    EMAIL_FIELD = 'email'
     email = models.EmailField(primary_key=True)
     name = models.CharField(max_length=50, blank=True)
-    member_since = models.DateField(default=timezone.now)
     linkedin = models.URLField(blank=True)
     portfolio = models.URLField(blank=True)  # Website or other link to personal info that isn't linkedin
     github = models.URLField(blank=True)  # Presumably the only person who will use this is you :)
     # But who knows, maybe a binfo person will want it
-    headshot = models.ImageField(upload_to=None, blank=True)  #  TODO add upload destination
-    active = models.BooleanField(default=True)
+    headshot = models.ImageField(upload_to='static/headshots', blank=True)  #  TODO add upload destination
     eboard = models.BooleanField(default=False)
     about = models.TextField(blank=True)
+    # Aside from email, these are required for using the django builting manager
+    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
+    date_joined = models.DateField(default=timezone.now)
+    last_login = models.DateField(default=timezone.now)
+    is_staff = models.BooleanField(default=False)
+    objects = MemberManager()
 
     def __str__(self):
         returnval = self.name if self.name is not None else self.email
         return self.email
+
+    def is_active(self):
+        return self.is_active
+
+    def get_full_name(self):
+        return self.name
+
+    def get_short_name(self):
+        return self.name.split()[0]
 
 class Roll(models.Model):
     """
@@ -113,3 +136,9 @@ class Roll(models.Model):
     roll_name = models.CharField(choices=ROLLS, default='mbr')
     # TODO: add unique constraint for any pair of (committee, roll) to ensure
     # no one is in the same committee twice
+
+    def __str__(self):
+        member = self.person.name
+        position = Roll.ROLLS[self.roll_name]
+        committee = self.committee.full_name
+        return f'{member}, {committee} {position}'

@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -8,4 +10,4 @@ urlpatterns = [
     path('tmd', views.mid, name='mid'),
     path('lexpo', views.lexpo, name='lexpo'),
     path('beday', views.beday, name='beday'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

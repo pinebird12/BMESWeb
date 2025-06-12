@@ -15,12 +15,12 @@
         <h1>{{ committee.full_name }}</h1>
         <p>{{ committee.description }}</p>
         <h2>Officers</h2>
-        <div class="tile">
+        <div class="row-fill">
             {% for officer in officers %}
-            <article class="tile-item">
-                <img alt="{{ officer.name }}" src="{{ officer.headshot.path }}"/>
+            <article class="row-item">
+                <img class='headshot' alt="{{ officer.name }}" src="{{ officer.headshot.url }}"/>
                 <h3>{{ officer.name }}</h2>
-                <p class="officer-about">{{ officer.about }}</p>
+                    <p class="officer-about">{{ officer.about }}</p>
             </article>
             {% endfor %}
         </div>
