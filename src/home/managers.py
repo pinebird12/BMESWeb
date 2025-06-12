@@ -1,4 +1,5 @@
 from django.contrib.auth import base_user
+from django.contrib.auth.hashers import make_password
 
 
 class MemberManager(base_user.BaseUserManager):
@@ -23,4 +24,5 @@ class MemberManager(base_user.BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         user = self._create_user(email, password, **extra_fields)
         user.is_superuser = True
+        user.is_staff = True
         return user

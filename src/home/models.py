@@ -101,9 +101,6 @@ class Member(base_user.AbstractBaseUser):
         returnval = self.name if self.name is not None else self.email
         return self.email
 
-    def is_active(self):
-        return self.is_active
-
     def get_full_name(self):
         return self.name
 
